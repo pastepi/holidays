@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import Countries from "./components/Countries";
+import { useState, useEffect } from "react";
+
+const axios = require('axios');
+const countriesURL = 'https://restcountries.com/v2/all?fields=flags,name,alpha3Code';
+
 
 function App() {
+  const [countries, setCountries] = useState([])
+  const [input, setInput] = useState('')
+  
+
+  useEffect(() => {
+    axios({
+      method: 'get',
+      url: countriesURL
+    }).then(response => setCountries(response.data))
+      .catch(error => console.error(error))
+  }, [])
+
+  const filterCountries = () => {
+    return countries.filter(el => el.name.toLowerCase().includes(input.toLowerCase()) || el.alpha3Code.toLowerCase().includes(input.toLowerCase()))
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input type="text"
+        value={input}
+        onChange={event => setInput(event.target.value)}
+      />
+      <Countries countries={filterCountries()}/>
     </div>
   );
 }
