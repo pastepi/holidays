@@ -5,6 +5,8 @@ import {
 	BrowserRouter as Router,
 	Route
 } from "react-router-dom";
+import { TextField, InputAdornment, Typography, Container } from '@mui/material';
+import { Search } from '@mui/icons-material';
 
 const axios = require('axios');
 const countriesURL = 'https://restcountries.com/v2/all?fields=flags,name,alpha3Code';
@@ -37,31 +39,46 @@ const Homepage = () => {
 	}
 
     return (
-        <Router>
-			<div>
-				<h1>The Worlds' Holidays</h1>
+		<Router>
+			<Container maxWidth="sm" sx={{ maxHeight: "100vh", borderLeft: 2, borderRight: 2 }}>
+				<Typography variant="h2" component="h1" sx={{ pt: 2, pb: 2 }} align="center">
+					The Worlds' Holidays
+				</Typography>
 				<Route
 					path="/"
 					exact
 					render={() => (
 						<>
-							<input
-								type="text"
-								value={input}
-								onChange={event => setInput(event.target.value)}
-							/>
-                            { countries.length !== 0 ? (
-                                <Countries countries={filterCountries()} />
-                            ) : (
-                                <p>Loading...</p>
-                            )}
+							<Container>
+								<TextField
+									type="text"
+									color="primary"
+									value={input}
+									onChange={event => setInput(event.target.value)}
+									label="Search for a country"
+									variant="filled"
+									fullWidth
+									InputProps = {{ 
+										endAdornment: (
+											<InputAdornment position="end">
+												<Search />
+											</InputAdornment>
+										)
+									}}
+								/>
+								{ countries.length !== 0 ? (
+									<Countries countries={filterCountries()} />
+								) : (
+									<p>Loading...</p>
+								)}
+							</Container>
 						</>
 					)}
 				/>
 				<Route path="/holidays/:code">
 					<Holidays countries={countries}/>
 				</Route>
-			</div>
+			</Container>
 		</Router>
     );
 }
