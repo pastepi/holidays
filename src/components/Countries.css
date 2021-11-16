@@ -1,0 +1,14 @@
+.countries__list {
+    width: 30vw;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.countries__list-item {
+    color: inherit;
+}
+
+.countries__list-item:visited {
+    text-decoration: none;
+    color: inherit;
+}

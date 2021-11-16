@@ -2,31 +2,30 @@ import {
 	Link
 } from 'react-router-dom';
 import { List, ListItem, ListItemText, ListItemAvatar } from "@mui/material"
+import "./Countries.css"
 
-const Holidays = ({ countries }) => {
+const Countries = ({ countries }) => {
 	return (
-		<List>
+		<List className="countries__list">
 			{countries.map(country => (
-				<ListItem 
-					inset
-					divider 
+				<ListItem
+					className="countries__list-item"
+					divider
 					key={country.alpha3Code}
-					component={Link} 
-					to={`/holidays/${country.alpha3Code}`} 
-					secondaryAction={country.alpha3Code}
-					color="primary"
+					component={Link}
+					to={`/holidays/${country.alpha3Code}`}
 				>
 					<ListItemAvatar>
-						<img alt={`Flag of ${country.name}`} src={country.flags.png} 
+						<img alt={`Flag of ${country.name}`} src={country.flags.png}
 							width="50px"
-							style={{ border: "1px solid black", margin: "5px" }} 
+							style={{ border: "1px solid black", margin: "5px" }}
 						/>
 					</ListItemAvatar>
-					<ListItemText primary={country.name} />
+					<ListItemText primary={country.name} secondary={country.alpha3Code} />
 				</ListItem>
 			))}
 		</List>
 	)
 }
 
-export default Holidays;
+export default Countries;

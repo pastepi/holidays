@@ -1,0 +1,26 @@
+.header__box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+}
+
+.country-info__box {
+    justify-self: center; 
+}
+
+.country-flag {
+    width: 2.5rem;
+    border: 1px solid black;
+    margin: 2px;
+}
+
+.checkbox__box {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 8px 0 8px;
+}
+
+.calendar__box {
+    width: 100%;
+}
