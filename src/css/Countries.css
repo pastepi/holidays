@@ -12,3 +12,9 @@
     text-decoration: none;
     color: inherit;
 }
+
+.list-item__img {
+    width: 50px;
+    border: 1px solid black;
+    margin: 5px;
+}

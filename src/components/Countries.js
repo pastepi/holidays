@@ -1,8 +1,6 @@
-import {
-	Link
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { List, ListItem, ListItemText, ListItemAvatar } from "@mui/material"
-import "./Countries.css"
+import "../css/Countries.css"
 
 const Countries = ({ countries }) => {
 	return (
@@ -17,8 +15,7 @@ const Countries = ({ countries }) => {
 				>
 					<ListItemAvatar>
 						<img alt={`Flag of ${country.name}`} src={country.flags.png}
-							width="50px"
-							style={{ border: "1px solid black", margin: "5px" }}
+							className="list-item__img"
 						/>
 					</ListItemAvatar>
 					<ListItemText primary={country.name} secondary={country.alpha3Code} />
