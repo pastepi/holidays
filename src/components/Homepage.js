@@ -25,7 +25,6 @@ const Homepage = () => {
 				method: 'get',
 				url: countriesURL
 			})
-			console.log(resp);
 			setCountries(resp.data);
 			return resp;
 		}

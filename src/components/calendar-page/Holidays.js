@@ -25,13 +25,12 @@ const Holidays = ({ countries, language }) => {
                     language: language
                 }
             })
-            console.log(resp)
             setEvents(resp.data.holidays)
-            window.localStorage.setItem(`holidays-${code}-${language}`, JSON.stringify(resp.data.holidays))
+            window.sessionStorage.setItem(`holidays-${code}-${language}`, JSON.stringify(resp.data.holidays))
             return resp;
         }
         try {
-            window.localStorage.getItem(`holidays-${code}-${language}`) ? setEvents(JSON.parse(window.localStorage.getItem(`holidays-${code}-${language}`))) : getHolidays();
+            window.sessionStorage.getItem(`holidays-${code}-${language}`) ? setEvents(JSON.parse(window.sessionStorage.getItem(`holidays-${code}-${language}`))) : getHolidays();
         } catch (err) {
             console.error(err);
         }
