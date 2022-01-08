@@ -6,7 +6,7 @@ import { Container } from '@mui/material';
 import CalendarHeader from './CalendarHeader';
 
 const axios = require('axios');
-const API_KEY = '41f44369-865f-46ec-8e6b-b2783d5ded6a';
+const API_KEY = '42efc471-859a-461a-b6a7-b1e1f420f5fa';
 
 const Holidays = ({ countries, language }) => {
     const { code } = useParams();
@@ -21,7 +21,7 @@ const Holidays = ({ countries, language }) => {
                 params: {
                     key: API_KEY,
                     country: code,
-                    year: 2020,         // Hardcoded 2020 - no current year data available
+                    year: new Date().getFullYear() - 1,         // 1 Year behind - API limitation
                     language: language
                 }
             })
